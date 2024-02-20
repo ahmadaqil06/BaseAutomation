@@ -19,7 +19,7 @@ class confReader {
 
 
 public class Data extends confReader{
-    String urlHrm, urlNewTab;
+    String urlHrm, urlNewTab, urlrpa, travelioUrl, email, password;
 
     public Data() {
         try {
@@ -35,6 +35,22 @@ public class Data extends confReader{
 
     public String getUrlNewTab(){
         return urlNewTab = temp.getProperty("urlNewTab");
+    }
+
+    public String getUrlRPA(){
+        return urlNewTab = temp.getProperty("urlRpa");
+    }
+
+    public String getUrlTravelio(){
+        return travelioUrl = temp.getProperty("urlTravelio");
+    }
+
+    public String getEmailTravelio(){
+        return email = temp.getProperty("emailTravelio");
+    }
+
+    public String getPassTravelio(){
+        return password = temp.getProperty("passTravelio");
     }
 
 }

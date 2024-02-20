@@ -7,9 +7,9 @@ public class ExtentManager {
     public static final ExtentReports extentReports = new ExtentReports();
     public synchronized static ExtentReports createExtentReports() {
         ExtentSparkReporter reporter = new ExtentSparkReporter(".\\extent-reports\\extent-report.html");
-        reporter.config().setReportName("Report Automation Test For BAU");
+        reporter.config().setReportName("Test Travelio");
         extentReports.attachReporter(reporter);
-        extentReports.setSystemInfo("Khaeruz & Zahra", "Check aja");
+        extentReports.setSystemInfo("Ahmad Aqil", "Test Travelio");
         return extentReports;
     }
 }

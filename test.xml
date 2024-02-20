@@ -6,15 +6,9 @@
         <listener class-name="listeners.AnnotationTransformer" />
     </listeners>
 
-<!--    <test name="Login To Azure">-->
-<!--        <classes>-->
-<!--            <class name="tests.Test_Latihan1" />-->
-<!--        </classes>-->
-<!--    </test>-->
-
-    <test name="Input Data">
+    <test name="Test Travelio">
         <classes>
-            <class name="tests.Test_Latihan2" />
+            <class name="tests.LoginTravelio" />
         </classes>
     </test>
 </suite>

@@ -28,8 +28,17 @@ public class Retry implements IRetryAnalyzer {
             }
         } else {
             iTestResult.setStatus(ITestResult.SUCCESS);
+            extendReportsPassOperations(iTestResult);
         }
         return false;
+    }
+
+    public void extendReportsPassOperations(ITestResult iTestResult) {
+        Object testClass = iTestResult.getInstance();
+        WebDriver webDriver = ((BaseTest) testClass).getDriver();
+        String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BASE64);
+        getTest().log(Status.FAIL, "Test Failed",
+            getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
     }
 
     public void extendReportsFailOperations(ITestResult iTestResult) {

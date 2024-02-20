@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-f019410d-e3ee-465f-9c2c-4d1ac1e04afd"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="3.273">
+    <properties></properties>
+
+
+
+            <testcase
+                name="negativeCaselogin"
+                time="3.273"
+                classname="tests.LoginTravelio">
+            </testcase>
+</testsuite>

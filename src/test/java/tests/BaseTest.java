@@ -4,13 +4,10 @@ import Utility.Data;
 import extentreports.ExtentManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import logs.Log;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -22,16 +19,13 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     protected Data setup;
-    protected Latihan1 latihan1;
-    protected Latihan2 latihan2;
 
-    protected Latihan3 latihan3;
+    protected RpaChallange challangeRpa; 
+    protected TravelioTest travelioTest;
 
-    protected DatePickertest datePickertest;
-
-    protected LoginHRM loginHRM;
     protected WebDriver driver;
     protected WebDriverWait wait;
+    
     public WebDriver getDriver(){
         return driver;
     }
@@ -46,32 +40,23 @@ public class BaseTest {
     @BeforeClass
     public void setUp(){
         setup = new Data();
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Useradmin\\Documents\\Driverchrome\\chromedriver_win32\\chromedriver.exe");
-        Log.info("Setup the browser");
-
-        // Start in Chrome
-        ChromeOptions chrome = new ChromeOptions();
-        chrome.setAcceptInsecureCerts(true);
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(chrome);
-        wait = new WebDriverWait(driver, 10);
+        System.setProperty("webdriver.chrome.driver", "src/test/java/Driver/chromedriver");
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Log.info("Browser is opening");
-        driver.get(setup.getUrlNewTab());
+//        driver.get(setup.getUrlTravelio());
+        driver.get("https://www.travelio.com");
         driver.manage().window().maximize();
-        //loginPage = new LoginPage(driver, wait);
 
-        latihan1 = new Latihan1(driver, wait);
-        latihan2 = new Latihan2(driver, wait);
-        latihan3 = new Latihan3(driver, wait);
-        loginHRM = new LoginHRM(driver, wait);
-        datePickertest = new DatePickertest(driver, wait);
+        challangeRpa = new RpaChallange(driver, wait);
+        travelioTest = new TravelioTest(driver);
     }
 
     @AfterClass
     public void getResult(){
         //driver.quit();
     }
+    
     @AfterSuite
     public void tearDown(){
         ExtentManager.extentReports.flush();
